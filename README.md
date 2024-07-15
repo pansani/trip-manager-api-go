@@ -1,1 +1,1 @@
-# trip-manager-api-go
+# nlw-journey-go

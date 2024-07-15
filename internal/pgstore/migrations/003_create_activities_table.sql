@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS activities (
 
 ---- create above / drop below ----
 
-DROP TABLE IF EXISTS activities;ne above.
+DROP TABLE IF EXISTS activities;
