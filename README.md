@@ -60,21 +60,89 @@ API endpoints will be accessible at `http://localhost:8080`.
 - `gen.go`: Code generation tool for various tasks.
 - `go.mod` and `go.sum`: Dependency management files.
 
-## API Endpoints
+# Trips API
 
-### Authentication
-- `POST /login`: Authenticates a user and returns a token.
+## Endpoints
 
-### Users
-- `GET /users`: Retrieves a list of all users.
-- `POST /users`: Creates a new user.
-- `GET /users/{id}`: Retrieves a user by ID.
-- `PUT /users/{id}`: Updates a user by ID.
-- `DELETE /users/{id}`: Deletes a user by ID.
+### Create a New Trip
+**POST /trips**
 
-### Trips
-- `GET /trips`: Retrieves a list of all trips.
-- `POST /trips`: Creates a new trip.
-- `GET /trips/{id}`: Retrieves a trip by ID.
-- `PUT /trips/{id}`: Updates a trip by ID.
-- `DELETE /trips/{id}`: Deletes a trip by ID.
+**Description:** Create a new trip.
+
+**Request Body:**
+- `destination`: string, required, minimum length 4
+- `emails_to_invite`: array of emails, required
+- `ends_at`: datetime, required
+- `owner_email`: email, required
+- `owner_name`: string, required
+- `starts_at`: datetime, required
+
+### Get Trip Details
+**GET /trips/{tripId}**
+
+**Description:** Get trip details by ID.
+
+### Update a Trip
+**PUT /trips/{tripId}**
+
+**Description:** Update a trip by ID.
+
+**Request Body:**
+- `destination`: string, required, minimum length 4
+- `ends_at`: datetime, required
+- `starts_at`: datetime, required
+
+### Get Activities for a Trip
+**GET /trips/{tripId}/activities**
+
+**Description:** Get activities for a trip by ID.
+
+### Create an Activity for a Trip
+**POST /trips/{tripId}/activities**
+
+**Description:** Create an activity for a trip.
+
+**Request Body:**
+- `occurs_at`: datetime, required
+- `title`: string, required
+
+### Confirm a Trip
+**GET /trips/{tripId}/confirm**
+
+**Description:** Confirm a trip and send email invitations.
+
+### Invite Someone to a Trip
+**POST /trips/{tripId}/invites**
+
+**Description:** Invite someone to the trip.
+
+**Request Body:**
+- `email`: email, required
+
+### Get Links for a Trip
+**GET /trips/{tripId}/links**
+
+**Description:** Get links for a trip by ID.
+
+### Create a Link for a Trip
+**POST /trips/{tripId}/links**
+
+**Description:** Create a link for a trip.
+
+**Request Body:**
+- `title`: string, required
+- `url`: string, required, must be a valid URL
+
+### Get Participants for a Trip
+**GET /trips/{tripId}/participants**
+
+**Description:** Get participants for a trip by ID.
+
+# Participants API
+
+## Endpoints
+
+### Confirm a Participant
+**PATCH /participants/{participantId}/confirm**
+
+**Description:** Confirms a participant on a trip.
