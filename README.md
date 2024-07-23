@@ -46,7 +46,7 @@ DATABASE_PASSWORD=<your-database-password>
 
 To start the server:
 ```sh
-go run cmd/journey/main.go
+go run cmd/journey/journey.go
 ```
 
 API endpoints will be accessible at `http://localhost:8080`.
